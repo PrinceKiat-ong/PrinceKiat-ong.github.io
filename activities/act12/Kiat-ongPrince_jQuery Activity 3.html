@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<title></title>
+</head>
+<body>
+	<div style="margin-top: 100px;">
+		<input type="text" id="nameInput" placeholder="Name">
+		<input type="text" id="courseInput" placeholder="Course">
+		<input type="text" id="sectionInput" placeholder="Section">
+		<button type="button" class="btn btn-primary" id="add-row">Save Record</button>
+	</div>
+
+	<div>
+		<table class="table">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Course</th>
+						<th>Section</th>
+						<th>ACTIONS</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						
+					</tr>
+				</tbody>
+			</table>
+	</div>
+</body>
+
+<style type="text/css">
+	html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    text-align: center;
+}
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#add-row").click(function(){
+			var nameStore = $("#nameInput").val();
+			var courseStore = $("#courseInput").val();
+			var sectionStore = $("#sectionInput").val();
+			$(".table tbody tr").last().after(
+				'<tr>'+
+						'<td>'+nameStore+'</td>'+
+						'<td>'+courseStore+'</td>'+
+						'<td>'+sectionStore+'</td>'+
+						'<td><button type="button" class="btn btn-danger">DELETE</button></td>'+
+					'</tr>'
+			);
+		})
+	});
+
+	$(document).ready(function(){
+		$('body').on('click', '.btn-danger', function(){
+			$(this).closest("tr").remove();
+		});
+	});
+</script>
+
+</html>
